@@ -1,5 +1,7 @@
 package com.thourie.flightreader.configs;
 
+import com.thourie.flightreader.utils.JwtTokenUtils;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.security.SignatureException;
 import java.util.stream.Collectors;
 
 @Component
