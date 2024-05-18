@@ -1,0 +1,28 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /demo
+jwt:
+  secret: 984hg493gh0439rthr0429uruj2309yh937gc763fe87t3f89723gf
+  lifetime: 10m
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: 1234
+  jpa:
+    properties:
+      hibernate:
+        connection:
+          autocommit: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+  liquibase:
+    enabled: false
+  main:
+    allow-circular-references: true

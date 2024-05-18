@@ -1,6 +1,7 @@
 package com.thourie.flightreader.servises;
 
-import com.thourie.flightreader.dtos.RegistrationUserDto;
+import com.thourie.flightreader.dtos.UserCreateRequest;
+import com.thourie.flightreader.dtos.UserCreateRequest;
 import com.thourie.flightreader.models.User;
 import com.thourie.flightreader.repositories.UserRepository;
 import jakarta.transaction.Transactional;
@@ -22,22 +23,6 @@ import java.util.List;
 public class UserService implements UserDetailsService {
     private UserRepository userRepository;
     private RoleService roleService;
-    private PasswordEncoder passwordEncoder;
-
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
-    }
-
-    @Autowired
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
@@ -49,6 +34,7 @@ public class UserService implements UserDetailsService {
         User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(
                 String.format("Пользователь '%s' не найден", username)
         ));
+
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
@@ -56,13 +42,13 @@ public class UserService implements UserDetailsService {
         );
     }
 
-    public User createNewUser(RegistrationUserDto registrationUserDto) {
-        User user = new User();
-        user.setUsername(registrationUserDto.getUsername());
-        user.setEmail(registrationUserDto.getEmail());
-        user.setPassword(passwordEncoder.encode(registrationUserDto.getPassword()));
-        user.setRoles(List.of(roleService.getUserRole()));
-        return userRepository.save(user);
+    public User createUser(UserCreateRequest request) {
+        return userRepository.save(User.builder()
+                .username(request.getUsername())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .roles(List.of(roleService.getUserRole()))
+                .build());
     }
 }
 

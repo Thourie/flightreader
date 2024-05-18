@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 @Table(name = "roles")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

@@ -2,10 +2,11 @@ package com.thourie.flightreader.exceptions;
 
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 public class AppError {
+
     private int status;
     private String message;
     private Date timestamp;
