@@ -1,5 +1,7 @@
 package com.thourie.flightreader.servises;
 
+import com.thourie.flightreader.dtos.JwtRequest;
+import com.thourie.flightreader.dtos.JwtResponse;
 import com.thourie.flightreader.dtos.RegistrationUserDto;
 import com.thourie.flightreader.dtos.UserDto;
 import com.thourie.flightreader.exceptions.AppError;
