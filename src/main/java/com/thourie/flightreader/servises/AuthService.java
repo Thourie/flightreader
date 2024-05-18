@@ -1,6 +1,8 @@
 package com.thourie.flightreader.servises;
 
 import com.thourie.flightreader.dtos.RegistrationUserDto;
+import com.thourie.flightreader.dtos.UserDto;
+import com.thourie.flightreader.exceptions.AppError;
 import com.thourie.flightreader.models.User;
 import com.thourie.flightreader.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
