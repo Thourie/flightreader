@@ -1,5 +1,6 @@
 package com.thourie.flightreader.servises;
 
+import com.thourie.flightreader.dtos.RegistrationUserDto;
 import com.thourie.flightreader.models.User;
 import com.thourie.flightreader.repositories.UserRepository;
 import jakarta.transaction.Transactional;
